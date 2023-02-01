@@ -1,0 +1,25 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    {% for news in newss %}
+
+            <articolo class="media content-section">
+              <div class="media-body">
+                <div class="metadata-articolo">
+                  <a class="mr-2" href="#">{{ news.autori}}</a>
+                  <a class="mr-2" href="#">{{ news.testata_giornalistica}}</a>
+                  <small class="text-muted">{{ news.data_di_pubblicazione}}</small>
+                </div>
+                <h2><a class="titolo-articolo" href={{news.link}}>{{ news.titolo}}</a></h2>
+                <p class="testo-articolo">{{ news.testo}}</p>
+              </div>
+            </articolo>
+
+    {% endfor %}
+{% endblock content %}
+
+
+
+
+
+
