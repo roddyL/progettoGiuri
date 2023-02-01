@@ -1,6 +1,46 @@
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+
+def news_get(keyword):
+    import feedparser
+    import newspaper
+    
+    if not keyword:
+        keyword="Vuoto"
+
+    # GOOGLE_RSS_URL="https://news.google.com/rss?hl=it&gl=IT&ceid=IT:it"
+    # NewsFeed = feedparser.parse(GOOGLE_RSS_URL)
+    
+    GOOGLE_RSS_KEYWORD_LOCALIZATION="https://news.google.com/rss/search?q=<KEYWORD>&hl=<LANGUAGE_CODE>&gl=<COUNTRY_CODE>&ceid=<COUNTRY_CODE>:<LANGUAGE_CODE>"
+
+    NewsFeed = feedparser.parse(GOOGLE_RSS_KEYWORD_LOCALIZATION.replace(
+    "<LANGUAGE_CODE>","It").replace(
+        "<COUNTRY_CODE>","It").replace(
+            "<KEYWORD>",str(keyword)))
+
+    # NewsFeed = feedparser.parse(GOOGLE_RSS_KEYWORD_LOCALIZATION.replace("<KEYWORD>",keyword))
+    newss=[]
+    for newsItem in NewsFeed.entries:
+        article=newspaper.Article(url=newsItem["link"])
+        try:
+            article.download()
+            article.parse()
+            newss.append(
+                        {"titolo":article.title,
+                          "autori":article.authors,
+                          "testata_giornalistica":newsItem.source["title"],
+                          "data_di_pubblicazione":article.publish_date,
+                          "link":newsItem["link"],
+                          "testo":article.text, 
+                          "img_url":article.top_image}
+                         )
+        except:
+            pass
+        # print(article.title+"\n"+article.text+"\n"+str(article.publish_date)+"\n"+"\n -----Nuovo Articolo------ \n")
+        if len(newss)>10:
+            return newss
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '737A6058082AE0297CE9893822CBE175773851A82231728442282232F6DDA1E9'
@@ -27,27 +67,18 @@ class News(db.Model):
 with app.app_context():
     db.create_all()
 
-    import feedparser
-    import newspaper
-
-    GOOGLE_RSS_URL="https://news.google.com/rss?hl=it&gl=IT&ceid=IT:it"
-    NewsFeed = feedparser.parse(GOOGLE_RSS_URL)
-
-    # NewsFeed = feedparser.parse(GOOGLE_RSS_KEYWORD_LOCALIZATION.replace("<KEYWORD>",keyword))
-    newss=[]
-    for newsItem in NewsFeed.entries:
-        article=newspaper.Article(url=newsItem["link"])
-        article.download()
-        article.parse()
-        # print(article.title+"\n"+article.text+"\n"+str(article.publish_date)+"\n"+"\n -----Nuovo Articolo------ \n")
-        
-        newss.append({"titolo":article.title,"autori":article.authors,"testata_giornalistica":newsItem.source["title"],"data_di_pubblicazione":article.publish_date,"link":newsItem["link"],"testo":article.text})
-        
 
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html", title="Home Page", news=newss)
+    return render_template("home.html", title="Home Page")
+
+@app.route("/news", methods=['POST'])
+def news():
+    user_keyword=request.form.get('search_topic')
+    return render_template("news.html", title="News", newss=news_get(user_keyword))
+
 if __name__ == '__main__':
     app.run(debug=True)
+
