@@ -1,0 +1,52 @@
+{% comment %} {% extends "news.html" %}
+{% block content %}
+    {% for news in newss %}
+    
+        <articolo class="media-content-section">
+            <div class="media-body">
+                <div class="metadata-articolo">
+                    <a class="mr-2">{{ news.autori}}</a>
+                    <a class="mr-2">{{ news.testata_giornalistica}}</a>
+                    <small class="text-muted">{{ news.data_di_pubblicazione}}</small>                 
+                </div>
+                <img src={{news.img_url}}></img>
+                <h2><a class="titolo-articolo" href={{news.link}}>{{ news.titolo}}</a></h2>
+                <div class="read-more">Leggi di più...</div>
+            </div>
+        </articolo>
+    {% endfor %}
+{% endblock content %} {% endcomment %}
+{% extends "news.html" %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_style.css') }}">
+{% block content %}
+    {% comment %} {% for news in newss %} {% endcomment %}
+    <div class="blog">
+  
+        <div class="title-box">
+          <h3>
+            asdasd
+          </h3>
+          <hr/>
+          <div class="intro">
+            Yllamco laboris nisi ut aliquip ex ea commodo.
+          </div>
+        </div>  
+        <div class="info">
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</span>
+      </div>
+      <div class="footer">
+        <div class="icon-holder">
+          <span>
+        <i class="fa fa-comment-o"></i>
+          <span>12</span>
+          <space></space>
+          <i class="fa fa-calendar"></i>
+          <span>03.12.2015</span>
+          </span>
+        </div>
+      </div>
+      
+     <div class="color-overlay"></div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+{% endblock content %}

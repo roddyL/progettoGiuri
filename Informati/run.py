@@ -32,14 +32,16 @@ def news_get(keyword):
                           "testata_giornalistica":newsItem.source["title"],
                           "data_di_pubblicazione":article.publish_date,
                           "link":newsItem["link"],
-                          "testo":article.text, 
+                          "testo":article.text[:300], 
                           "img_url":article.top_image}
                          )
         except:
             pass
+        print(newss[0])
+
         # print(article.title+"\n"+article.text+"\n"+str(article.publish_date)+"\n"+"\n -----Nuovo Articolo------ \n")
         if len(newss)>10:
-            return newss
+            return newss[0] 
 
 
 app = Flask(__name__)
@@ -70,9 +72,8 @@ with app.app_context():
 
 
 @app.route("/")
-@app.route("/home")
 def home():
-    return render_template("home.html", title="Home Page")
+    return render_template("index.html", title="Home Page")
 
 @app.route("/news", methods=['POST'])
 def news():

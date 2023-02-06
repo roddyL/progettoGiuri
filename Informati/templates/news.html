@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_style.css') }}">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+  <body>
+    
+    
+
+
+    <div class="blog">
+      <div class="title-box">
+        <h3>
+          {{ newss.titolo }}
+        </h3>
+        <hr/>
+        <div class="intro">
+          {{ newss.testata_giornalistica }}
+        </div>
+      </div>  
+      <div class="info">
+        <span>{{ newss.testo}}</span>
+    </div>
+    <div class="footer">
+      <div class="icon-holder">
+        <span>
+      <i class="fa fa-comment-o"></i>
+        <span>{{ newss.autori }}</span>
+        <space></space>
+        <i class="fa fa-calendar"></i>
+        <span>{{ newss.data_di_pubblicazione}}</span>
+        </span>
+      </div>
+    </div>  
+    
+   <div class="color-overlay"></div>
+  </div>
+  
+  
+            
+
+
+  </body>
+</html>
