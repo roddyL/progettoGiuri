@@ -1,34 +1,36 @@
-
 {% extends "news.html" %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_style.css') }}">
-{% block content %}
-    <div class="blog">
-  
+  {% block content %}
+    {% for news in newss %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_style.css') }}">
+    
+      <div class="blog">
         <div class="title-box">
           <h3>
-            asdasd
+            {{ news.titolo }}
           </h3>
           <hr/>
           <div class="intro">
-            Yllamco laboris nisi ut aliquip ex ea commodo.
+            {{ news.testata_giornalistica }}
           </div>
         </div>  
         <div class="info">
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</span>
+          <span>{{ news.testo}}</span>
       </div>
       <div class="footer">
         <div class="icon-holder">
           <span>
         <i class="fa fa-comment-o"></i>
-          <span>12</span>
+          <span>{{ news.autori }}</span>
           <space></space>
           <i class="fa fa-calendar"></i>
-          <span>03.12.2015</span>
+          <span>{{ news.data_di_pubblicazione}}</span>
           </span>
         </div>
-      </div>
+      </div>  
       
-     <div class="color-overlay"></div>
+    <div class="color-overlay"></div>
     </div>
-
-{% endblock content %}
+    
+  
+    {% endfor %}
+{% endblock content %} 

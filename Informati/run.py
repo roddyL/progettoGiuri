@@ -41,7 +41,7 @@ def news_get(keyword):
 
         # print(article.title+"\n"+article.text+"\n"+str(article.publish_date)+"\n"+"\n -----Nuovo Articolo------ \n")
         if len(newss)>10:
-            return newss[0] 
+            return newss
 
 
 app = Flask(__name__)
