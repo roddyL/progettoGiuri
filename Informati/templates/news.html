@@ -9,39 +9,38 @@
   <body>
     
     
-
-
-    <div class="blog">
+    {% for news in newss %}
+    <div class="blog" style='background:url( {{ news.urlToImage }} )'>
       <div class="title-box">
         <h3>
-          {{ newss.titolo }}
+          {{ news.title }}
         </h3>
         <hr/>
         <div class="intro">
-          {{ newss.testata_giornalistica }}
+          {{ news.source['name']}}
         </div>
       </div>  
       <div class="info">
-        <span>{{ newss.testo}}</span>
+        <span>{{ news.content}}</span>
     </div>
     <div class="footer">
       <div class="icon-holder">
         <span>
       <i class="fa fa-comment-o"></i>
-        <span>{{ newss.autori }}</span>
+        <span>{{ news.author }}</span>
         <space></space>
         <i class="fa fa-calendar"></i>
-        <span>{{ newss.data_di_pubblicazione}}</span>
+        <span>{{ news.publishedAt}}</span>
         </span>
       </div>
     </div>  
     
    <div class="color-overlay"></div>
   </div>
-  
+  {% endfor %}
   
             
-
+  
 
   </body>
 </html>
