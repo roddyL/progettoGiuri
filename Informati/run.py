@@ -10,14 +10,6 @@ def news_get(keyword):
     response = requests.get(url)
     return json.loads(response.text)["articles"]
 
-                        # {"titolo":article.title,
-                        #   "autori":article.authors,
-                        #   "testata_giornalistica":newsItem.source["title"],
-                        #   "data_di_pubblicazione":article.publish_date,
-                        #   "link":newsItem["link"],
-                        #   "testo":article.text[:300], 
-                        #   "img_url":article.top_image}
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '737A6058082AE0297CE9893822CBE175773851A82231728442282232F6DDA1E9'
 
@@ -62,17 +54,6 @@ if __name__ == '__main__':
 
 
 
-def get_data():
-    with open('data.json') as json_file:
-        data = json.load(json_file)
-        
-        
-#  newss.append(
-#                         {"titolo":article.title,
-#                           "autori":article.authors,
-#                           "testata_giornalistica":newsItem.source["title"],
-#                           "data_di_pubblicazione":article.publish_date,
-#                           "link":newsItem["link"],
-#                           "testo":article.text[:300], 
-#                           "img_url":article.top_image}
-#                          )
+# def get_data():
+#     with open('data.json') as json_file:
+#         data = json.load(json_file)
