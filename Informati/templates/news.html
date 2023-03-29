@@ -11,9 +11,13 @@
     
     {% for news in newss %}
     <div class="blog" style='background:url( {{ news.urlToImage }} )'>
+      <div id = "all" value ='{{ news }}'> </div>
+      <div>
+        <input id="star" onclick="check(this)" class="star" type="checkbox" > 
+      </div>
       <div class="title-box">
         <h3>
-          {{ news.title }}
+          <a href="{{ news.url }}">{{ news.title }}</a>
         </h3>
         <hr/>
         <div class="intro">
@@ -37,7 +41,19 @@
     
    <div class="color-overlay"></div>
   </div>
+  <br>
   {% endfor %}
+  <style>
+    html { 
+      background: url({{url_for('static', filename='nuvola.png')}}) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+  <script src="{{url_for('static', filename='script_news.js')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
 
 
   </body>

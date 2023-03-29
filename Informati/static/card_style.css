@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 
 body{
-  background: #323c3f;
+  /* background: #323c3f; */
   font-family: Roboto, veranda;
   padding-bottom: 4em;
 }
@@ -124,4 +124,22 @@ space{
   display: inline-block;
   width: 0.6em;
   height: 1em;
+}
+.star {
+  float :right;
+  margin-right: 10%;
+  color:yellow;
+  visibility:hidden;
+  font-size:30px;
+  cursor:pointer;
+}
+.star:before {
+ content: "\2606";
+ position: absolute;
+ visibility:visible;
+}
+.star:checked:before {
+  
+ content: "\2605";
+ position: absolute;
 }
