@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 import json
 
-database = r'sqlite:///C:\Users\Utente\OneDrive\Desktop\Architettura dei sistemi di elaborazione - Giuri\progettoGiuri\Informati\instance\registrations_db.db'
+database = r'sqlite:///.\instance\registrations_db.db'
 
 def ExecQuery(query):
     # create a SQLAlchemy engine to connect to the database file
@@ -65,4 +65,5 @@ def create_table():
 #RemoveTable('Films')
 #create_table()
 GetTabble()
+RemoveTable('NewsDb')
 
