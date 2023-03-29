@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style_login.css') }}">
   
 
+	<title>Login</title>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -50,6 +48,17 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js'></script>
   <script src="{{url_for('static', filename='script_login.js')}}"></script>
   
+
+    <h1>Login</h1>
+        <form method="post" action="{{ url_for('login') }}">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
 
 </body>
 </html>

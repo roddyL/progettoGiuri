@@ -13,6 +13,19 @@
         <ul>
             <li><a href="#about">About</a></li>
           </ul>
+      <nav class="navbar"></nav>
+        <ul>  
+          {% if session['user_id'] %}
+            <li><a href="/logout">Logout</a></li>
+          {% else %}
+            <li><a href='/registration' >Register</a></li>
+            <li><a href="/login">Login</a></li>
+          {% endif %}
+
+          
+          
+        </ul>
+      </nav>
         <div class="container">
             <div class="title-homepage"></div><br> 
         </div>
@@ -31,7 +44,6 @@
           </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="{{url_for('static', filename='script_index.js')}}"></script>
         
     </body>
 </html>
