@@ -106,7 +106,14 @@ def home():
 @app.route("/news", methods=['POST'])
 def news():
     user_keyword=request.form.get('search_topic')
-    return render_template("news.html", title="News", newss=news_get(user_keyword))
+    newss=news_get(user_keyword)
+    # print(newss[0]['author'])
+    for i in range(len(newss)):
+        if newss[i]['author']:
+            newss[i]['author'] = newss[i]['author'][:10]
+            newss[i]['publishedAt'] = newss[i]['publishedAt'].replace('T', ' ')[:16]
+    print(newss)
+    return render_template("news.html", title="News", newss=newss)
 
 @app.route('/add_remove_fav', methods=['POST'])
 def add_remove_fav():
@@ -128,7 +135,9 @@ def add_remove_fav():
 
     return json.dumps({'status':'OK'});
 
-
+@app.route("/login")
+def login():
+    return render_template("login.html", title="login")
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -143,3 +143,7 @@ space{
  content: "\2605";
  position: absolute;
 }
+a{
+  text-decoration: none;
+  color: #fff;
+}
