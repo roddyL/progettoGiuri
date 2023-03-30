@@ -65,5 +65,5 @@ def create_table():
 #RemoveTable('Films')
 #create_table()
 GetTabble()
-RemoveTable('NewsDb')
+# RemoveTable('NewsDb')
 
