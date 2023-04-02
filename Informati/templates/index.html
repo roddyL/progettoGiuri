@@ -14,8 +14,10 @@
         <ul>  
           {% if session['user_id'] %}
             <li><a href="/logout">Logout</a></li>
+            <li><a href='/favourite' >Favourite</a></li>
           {% else %}
             <li><a href='/registration' >Register</a></li>
+            
             <li><a href="/login">Login</a></li>
           {% endif %}
         </ul>

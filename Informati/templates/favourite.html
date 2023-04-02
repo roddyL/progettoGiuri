@@ -2,7 +2,7 @@
 <html>
 <head>
    <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card_favourite_style.css') }}">
 
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -14,7 +14,7 @@
       
       {% if session["user_id"] %}
       <div>
-        <input id="star" onclick="check(this)" class="star" type="checkbox" > 
+        <input id="star" onclick="check(this)" class="star" type="checkbox" checked> 
       </div>
       {% endif %}
 
@@ -55,7 +55,7 @@
       background-size: cover;
     }
   </style>
-  <script src="{{url_for('static', filename='script_news.js')}}"></script>
+  <script src="{{url_for('static', filename='script_favourite.js')}}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
 
 
